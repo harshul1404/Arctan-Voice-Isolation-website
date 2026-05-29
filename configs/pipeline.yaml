@@ -1,0 +1,27 @@
+project:
+  upstream_root: third_party/FunCineForge
+  run_root: runs
+
+languages:
+  zh:
+    raw_root: datasets/raw_zh
+    clean_root: datasets/clean/zh
+    clip_device: cpu
+  en:
+    raw_root: datasets/raw_en
+    clean_root: datasets/clean/en
+    clip_device: cpu
+
+trim:
+  intro: 10
+  outro: 10
+  workers:
+
+execution:
+  device: cpu
+  cleanup_execute: false
+  provider: google
+  model: gemini-3-pro-preview
+  dataset_out_dir: datasets/clean
+  speech_gpus: []
+  diarization_gpus: "-1"
