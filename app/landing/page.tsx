@@ -558,7 +558,7 @@ export default function LandingPage() {
 
           /* Stats */
           .rsp-section     { padding: 60px 20px !important; }
-          .rsp-stats-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 28px !important; }
+          .rsp-stats-grid  { grid-template-columns: 1fr !important; gap: 0 !important; }
           .rsp-stats-num   { font-size: 52px !important; }
           .rsp-stats-h2    { font-size: 30px !important; margin-bottom: 40px !important; }
 
@@ -595,7 +595,7 @@ export default function LandingPage() {
 
           /* Footer */
           .rsp-footer          { padding: 48px 20px 32px !important; }
-          .rsp-footer-grid     { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+          .rsp-footer-top      { margin-bottom: 28px !important; }
           .rsp-footer-bottom   { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
           .rsp-footer-legal    { flex-wrap: wrap !important; gap: 12px !important; }
 
