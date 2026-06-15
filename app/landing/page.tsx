@@ -1441,8 +1441,13 @@ export default function LandingPage() {
             <div className="rsp-footer-bottom" style={{ borderTop: `1px solid ${D.border}`, paddingTop: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' as const, gap: 12 }}>
               <span style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, color: D.muted }}>© 2026 Arctan, Inc. All rights reserved.</span>
               <div className="rsp-footer-legal" style={{ display: 'flex', gap: 24 }}>
-                {['Privacy Policy','Terms of Service','Security','Status'].map(l => (
-                  <a key={l} href="#" style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, letterSpacing: '-0.01em', color: D.muted }}>{l}</a>
+                {[
+                  { label: 'Privacy Policy', href: 'https://www.arctan.ai/legal/privacy-policy' },
+                  { label: 'Terms of Service', href: 'https://www.arctan.ai/legal/terms-and-conditions' },
+                  { label: 'Security', href: '#' },
+                  { label: 'Status', href: '#' },
+                ].map(({ label, href }) => (
+                  <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, letterSpacing: '-0.01em', color: D.muted }}>{label}</a>
                 ))}
               </div>
             </div>
