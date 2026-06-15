@@ -1419,9 +1419,8 @@ export default function LandingPage() {
                   The audio intelligence layer for Voice AI. Remove noise, isolate speakers, and make your AI actually work.
                 </p>
                 <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
-                  {['𝕏','in','⊙'].map(icon => (
-                    <a key={icon} href="#" style={{ width: 32, height: 32, borderRadius: 8, background: D.offWhite, border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: D.muted, fontFamily: GTA, fontSize: 13 }}>{icon}</a>
-                  ))}
+                  <a href="https://x.com/ArctanAI" target="_blank" rel="noopener noreferrer" style={{ width: 32, height: 32, borderRadius: 8, background: D.offWhite, border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: D.muted, fontFamily: GTA, fontSize: 13 }}>𝕏</a>
+                  <a href="https://www.linkedin.com/company/arctan-ai/" target="_blank" rel="noopener noreferrer" style={{ width: 32, height: 32, borderRadius: 8, background: D.offWhite, border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: D.muted, fontFamily: GTA, fontSize: 13 }}>in</a>
                 </div>
               </div>
               {[
