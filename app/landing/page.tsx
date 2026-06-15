@@ -630,7 +630,7 @@ export default function LandingPage() {
         }}>
           <div className="rsp-nav-inner" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <img src="/logos/arctan-mark.svg" alt="Arctan logomark" width="32" height="24" style={{ display: 'block' }} />
+              <img src="/logos/arctan-mark.svg" alt="Arctan logomark" width="28" height="22" style={{ display: 'block' }} />
               <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.heading }}>arc<span style={{ color: '#1A8A70' }}>t</span>an</span>
             </a>
             <div className="rsp-nav-links" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
@@ -764,7 +764,7 @@ export default function LandingPage() {
             <div className="rsp-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
               {[
                 { n: '57',  suffix: '%',  label: 'Reduction in WER' },
-                { n: '10',  suffix: 'ms', label: 'Latency' },
+                { n: '10',  suffix: 'ms', label: 'Processing Latency' },
                 { n: '90',  suffix: '%',  label: 'Fewer wasted LLM calls' },
               ].map((s, i) => (
                 <div key={i} style={{
@@ -990,21 +990,29 @@ export default function LandingPage() {
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' as const, marginBottom: 36 }}>
                 {/* LiveKit */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 22px', borderRadius: 14, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 3 L3 19 L19 19" stroke="#00E5A0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                    <circle cx="19" cy="19" r="2.5" fill="#00E5A0"/>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* LiveKit mark — two upward chevrons */}
+                    <path d="M4 17L12 9L20 17" stroke="#00E599" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 12L12 4L20 12" stroke="#00E599" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.01em', color: 'white' }}>LiveKit</span>
                 </div>
                 {/* Pipecat */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 22px', borderRadius: 14, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="11" cy="13" r="7" fill="#FF7B2E"/>
-                    <path d="M5.5 9 L4 4 L8.5 8" fill="#FF7B2E"/>
-                    <path d="M16.5 9 L18 4 L13.5 8" fill="#FF7B2E"/>
-                    <circle cx="8.5" cy="13" r="1.3" fill="white"/>
-                    <circle cx="13.5" cy="13" r="1.3" fill="white"/>
-                    <path d="M9.5 16 Q11 17.5 12.5 16" stroke="white" strokeWidth="1" strokeLinecap="round" fill="none"/>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Pipecat mark — cat face */}
+                    <circle cx="12" cy="14" r="8" fill="#F97316"/>
+                    <polygon points="6,10 4,3 10,8" fill="#F97316"/>
+                    <polygon points="18,10 20,3 14,8" fill="#F97316"/>
+                    <polygon points="6.5,9 5,4.5 9.5,7.5" fill="#FCD34D"/>
+                    <polygon points="17.5,9 19,4.5 14.5,7.5" fill="#FCD34D"/>
+                    <ellipse cx="9" cy="13.5" rx="1.5" ry="1.5" fill="#1C1917"/>
+                    <ellipse cx="15" cy="13.5" rx="1.5" ry="1.5" fill="#1C1917"/>
+                    <ellipse cx="12" cy="16" rx="1.1" ry="0.8" fill="#FB923C"/>
+                    <line x1="3" y1="14" x2="8" y2="15" stroke="#1C1917" strokeWidth="0.7"/>
+                    <line x1="3" y1="16" x2="8" y2="16" stroke="#1C1917" strokeWidth="0.7"/>
+                    <line x1="16" y1="15" x2="21" y2="14" stroke="#1C1917" strokeWidth="0.7"/>
+                    <line x1="16" y1="16" x2="21" y2="16" stroke="#1C1917" strokeWidth="0.7"/>
                   </svg>
                   <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.01em', color: 'white' }}>pipecat</span>
                 </div>
@@ -1416,7 +1424,7 @@ export default function LandingPage() {
             <div className="rsp-footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 60, marginBottom: 56 }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                  <img src="/logos/arctan-mark.svg" alt="Arctan logomark" width="32" height="24" style={{ display: 'block' }} />
+                  <img src="/logos/arctan-mark.svg" alt="Arctan logomark" width="28" height="22" style={{ display: 'block' }} />
                   <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.ink }}>arc<span style={{ color: '#1A8A70' }}>t</span>an</span>
                 </div>
                 <p style={{ fontFamily: GTA, fontSize: 14, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.7em', color: D.inkSub, maxWidth: 240 }}>
