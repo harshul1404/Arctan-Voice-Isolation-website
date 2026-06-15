@@ -654,10 +654,8 @@ export default function LandingPage() {
             </a>
             <div className="rsp-nav-links" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
               {[
-                { label: 'Product',  href: '#' },
-                { label: 'Docs',     href: '#' },
-                { label: 'Pricing',  href: '#' },
-                { label: 'Company',  href: '#' },
+                { label: 'Product',     href: '#product' },
+                { label: 'Integration', href: '#integration' },
               ].map(({ label, href }) => (
                 <a key={label} href={href} style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, color: D.inkSub, transition: 'opacity 0.15s' }}>{label}</a>
               ))}
@@ -815,7 +813,7 @@ export default function LandingPage() {
         </section>
 
         {/* ══════ STREAM PROCESSING ANIMATION — How Arctan works ══════ */}
-        <section className="rsp-stream-section" style={{ background: D.offWhite, padding: '100px 40px', overflow: 'hidden' }}>
+        <section id="product" className="rsp-stream-section" style={{ background: D.offWhite, padding: '100px 40px', overflow: 'hidden' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
 
             {/* Header */}
@@ -964,7 +962,7 @@ export default function LandingPage() {
         </section>
 
         {/* ══════ SDK / INTEGRATION ══════ */}
-        <section className="rsp-intg-section" style={{ background: D.heroBg, padding: '100px 40px' }}>
+        <section id="integration" className="rsp-intg-section" style={{ background: D.heroBg, padding: '100px 40px' }}>
           <div className="rsp-intg-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
             <div>
               <span style={{ fontFamily: "'Fragment Mono', monospace", fontSize: 11, color: D.lime, letterSpacing: '0.06em', textTransform: 'uppercase' as const, display: 'block', marginBottom: 20 }}>Integration</span>
@@ -1390,7 +1388,7 @@ export default function LandingPage() {
 
             {/* Subtext */}
             <p style={{ fontFamily: GTA, fontSize: 18, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.65em', color: 'rgba(255,255,255,0.5)', marginBottom: 44, maxWidth: 440 }}>
-              Try Arctan free for 14 days — no credit card required. Or book a 30-minute call with our team.
+              Get started with Arctan for free, no credit card required. Or book a 30-minute call with our team.
             </p>
 
             {/* CTA buttons */}
