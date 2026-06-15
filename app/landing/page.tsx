@@ -966,7 +966,6 @@ export default function LandingPage() {
         <section id="integration" className="rsp-intg-section" style={{ background: D.heroBg, padding: '100px 40px' }}>
           <div className="rsp-intg-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
             <div>
-              <span style={{ fontFamily: "'Fragment Mono', monospace", fontSize: 11, color: D.lime, letterSpacing: '0.06em', textTransform: 'uppercase' as const, display: 'block', marginBottom: 20 }}>Integration</span>
               <h2 className="rsp-intg-h2" style={{ fontFamily: GTA, fontSize: 40, fontWeight: 400, letterSpacing: '-0.05em', lineHeight: '1.1em', fontFeatureSettings: '"blwf" on,"cv09" on,"cv03" on,"cv04" on,"cv11" on', color: 'white', marginBottom: 24 }}>
                 <span style={{ color: '#1A8A70' }}>Native</span> in the language<br/>you ship in.
               </h2>
@@ -1431,17 +1430,6 @@ export default function LandingPage() {
                 </p>
               </div>
 
-              {/* Nav links */}
-              <div style={{ display: 'flex', gap: 36, flexWrap: 'wrap' as const, alignItems: 'center' }}>
-                {[
-                  { label: 'How it works', href: '#product' },
-                  { label: 'Benchmarks',   href: '#benchmarks' },
-                  { label: 'Integration',  href: '#integration' },
-                  { label: 'Contact',      href: '#contact' },
-                ].map(({ label, href }) => (
-                  <a key={label} href={href} style={{ fontFamily: GTA, fontSize: 15, fontWeight: 400, letterSpacing: '-0.01em', color: D.inkSub, textDecoration: 'none' }}>{label}</a>
-                ))}
-              </div>
             </div>
 
             {/* Bottom row: copyright left, social + legal right */}
