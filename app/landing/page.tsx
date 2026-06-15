@@ -1413,51 +1413,51 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ══════ FOOTER — Duna 4-col, dark #160F0C, GT America Regular ══════ */}
-        <footer className="rsp-footer" style={{ background: D.white, borderTop: `1px solid ${D.border}`, padding: '64px 40px 40px' }}>
+        {/* ══════ FOOTER ══════ */}
+        <footer className="rsp-footer" style={{ background: D.white, borderTop: `1px solid ${D.border}`, padding: '52px 40px 36px' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div className="rsp-footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 60, marginBottom: 56 }}>
+
+            {/* Top row: brand left, nav links right */}
+            <div className="rsp-footer-top" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap' as const, gap: 40, marginBottom: 48 }}>
+
+              {/* Brand */}
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
                   <img src="/logos/arctan-mark.svg" alt="Arctan logomark" width="34" height="20" style={{ display: 'block' }} />
                   <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.ink }}>arctan</span>
                 </div>
-                <p style={{ fontFamily: GTA, fontSize: 14, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.7em', color: D.inkSub, maxWidth: 240 }}>
-                  The audio intelligence layer for Voice AI. Remove noise, isolate speakers, and make your AI actually work.
+                <p style={{ fontFamily: GTA, fontSize: 14, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.7em', color: D.inkSub, maxWidth: 260, margin: 0 }}>
+                  The audio intelligence layer for Voice AI.
                 </p>
-                <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
-                  <a href="https://x.com/ArctanAI" target="_blank" rel="noopener noreferrer" style={{ width: 32, height: 32, borderRadius: 8, background: D.offWhite, border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: D.muted, fontFamily: GTA, fontSize: 13 }}>𝕏</a>
-                  <a href="https://www.linkedin.com/company/arctan-ai/" target="_blank" rel="noopener noreferrer" style={{ width: 32, height: 32, borderRadius: 8, background: D.offWhite, border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: D.muted, fontFamily: GTA, fontSize: 13 }}>in</a>
-                </div>
               </div>
-              {[
-                { heading: 'Product',    links: ['Noise Suppression','Echo Cancellation','Speaker Isolation','VAD','Pricing'] },
-                { heading: 'Developers', links: ['Python SDK','Node SDK','Go SDK','REST API','Open Source'] },
-                { heading: 'Company',    links: ['About','Blog','Careers','Press','Security','Status'] },
-              ].map(col => (
-                <div key={col.heading}>
-                  <h4 style={{ fontFamily: GTA, fontSize: 11, fontWeight: 400, letterSpacing: '0.06em', textTransform: 'uppercase' as const, color: D.ink, marginBottom: 16 }}>{col.heading}</h4>
-                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column' as const, gap: 10 }}>
-                    {col.links.map(link => (
-                      <li key={link}><a href="#" style={{ fontFamily: GTA, fontSize: 14, fontWeight: 400, letterSpacing: '-0.01em', color: D.inkSub }}>{link}</a></li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            <div className="rsp-footer-bottom" style={{ borderTop: `1px solid ${D.border}`, paddingTop: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' as const, gap: 12 }}>
-              <span style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, color: D.muted }}>© 2026 Arctan, Inc. All rights reserved.</span>
-              <div className="rsp-footer-legal" style={{ display: 'flex', gap: 24 }}>
+
+              {/* Nav links */}
+              <div style={{ display: 'flex', gap: 36, flexWrap: 'wrap' as const, alignItems: 'center' }}>
                 {[
-                  { label: 'Privacy Policy', href: '/legal/privacy-policy' },
-                  { label: 'Terms of Service', href: '/legal/terms-and-conditions' },
-                  { label: 'Security', href: '#' },
-                  { label: 'Status', href: '#' },
+                  { label: 'How it works', href: '#product' },
+                  { label: 'Benchmarks',   href: '#benchmarks' },
+                  { label: 'Integration',  href: '#integration' },
+                  { label: 'Contact',      href: '#contact' },
                 ].map(({ label, href }) => (
-                  <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, letterSpacing: '-0.01em', color: D.muted }}>{label}</a>
+                  <a key={label} href={href} style={{ fontFamily: GTA, fontSize: 15, fontWeight: 400, letterSpacing: '-0.01em', color: D.inkSub, textDecoration: 'none' }}>{label}</a>
                 ))}
               </div>
             </div>
+
+            {/* Bottom row: copyright left, social + legal right */}
+            <div className="rsp-footer-bottom" style={{ borderTop: `1px solid ${D.border}`, paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' as const, gap: 16 }}>
+              <span style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, color: D.muted }}>© 2026 Arctan, Inc. All rights reserved.</span>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+                {/* Legal */}
+                <a href="/legal/privacy-policy" style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, letterSpacing: '-0.01em', color: D.muted, textDecoration: 'none' }}>Privacy Policy</a>
+                <a href="/legal/terms-and-conditions" style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, letterSpacing: '-0.01em', color: D.muted, textDecoration: 'none' }}>Terms of Service</a>
+                {/* Social */}
+                <a href="https://x.com/ArctanAI" target="_blank" rel="noopener noreferrer" style={{ width: 30, height: 30, borderRadius: 8, background: D.offWhite, border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: D.muted, fontFamily: GTA, fontSize: 13, textDecoration: 'none' }}>𝕏</a>
+                <a href="https://www.linkedin.com/company/arctan-ai/" target="_blank" rel="noopener noreferrer" style={{ width: 30, height: 30, borderRadius: 8, background: D.offWhite, border: `1px solid ${D.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: D.muted, fontFamily: GTA, fontSize: 13, textDecoration: 'none' }}>in</a>
+              </div>
+            </div>
+
           </div>
         </footer>
       </div>
