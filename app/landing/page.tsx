@@ -985,16 +985,29 @@ export default function LandingPage() {
                 <span style={{ color: '#1A8A70' }}>Native</span> in the language<br/>you ship in.
               </h2>
               <p style={{ fontFamily: GTA, fontSize: 18, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.65em', color: 'rgba(255,255,255,0.5)', marginBottom: 36 }}>
-                First-party SDKs for Node, Python, Go, and Rust. Or hit the REST endpoint directly — every feature is exposed over plain HTTP.
+                First-party SDKs for Node, Python, Go, and Rust.
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 14, marginBottom: 36 }}>
-                {['Typed clients with auto-retry and backpressure','Streaming and batch modes in every SDK','Open-source under Apache 2.0'].map(item => (
-                  <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 12, fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.7)' }}>
-                    <div style={{ width: 16, height: 16, borderRadius: 4, background: D.lime, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <span style={{ fontSize: 9, color: D.heading, fontWeight: 400 }}>→</span>
-                    </div>{item}
-                  </div>
-                ))}
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' as const, marginBottom: 36 }}>
+                {/* LiveKit */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 22px', borderRadius: 14, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3 L3 19 L19 19" stroke="#00E5A0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="19" cy="19" r="2.5" fill="#00E5A0"/>
+                  </svg>
+                  <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.01em', color: 'white' }}>LiveKit</span>
+                </div>
+                {/* Pipecat */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 22px', borderRadius: 14, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="13" r="7" fill="#FF7B2E"/>
+                    <path d="M5.5 9 L4 4 L8.5 8" fill="#FF7B2E"/>
+                    <path d="M16.5 9 L18 4 L13.5 8" fill="#FF7B2E"/>
+                    <circle cx="8.5" cy="13" r="1.3" fill="white"/>
+                    <circle cx="13.5" cy="13" r="1.3" fill="white"/>
+                    <path d="M9.5 16 Q11 17.5 12.5 16" stroke="white" strokeWidth="1" strokeLinecap="round" fill="none"/>
+                  </svg>
+                  <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.01em', color: 'white' }}>pipecat</span>
+                </div>
               </div>
             </div>
 
