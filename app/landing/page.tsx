@@ -1061,8 +1061,8 @@ export default function LandingPage() {
                 <span style={{ fontFamily: GTA, fontSize: 13, color: D.inkSub, letterSpacing: '-0.01em' }}>Only STT</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div style={{ width: 28, height: 8, borderRadius: 4, background: D.darkPure }} />
-                <span style={{ fontFamily: GTA, fontSize: 13, color: D.ink, letterSpacing: '-0.01em' }}>+ Arctan</span>
+                <div style={{ width: 28, height: 8, borderRadius: 4, background: '#0B3D2E' }} />
+                <span style={{ fontFamily: GTA, fontSize: 13, color: D.ink, letterSpacing: '-0.01em' }}>With Arctan</span>
               </div>
             </div>
 
@@ -1105,7 +1105,7 @@ export default function LandingPage() {
                             animationDelay: `${delay + 1.1}s`,
                           }} />
                         </div>
-                        <span style={{ fontFamily: GTA_MD, fontSize: 13, color: '#1A8A70', width: 44, textAlign: 'right', flexShrink: 0 }}>
+                        <span style={{ fontFamily: GTA_MD, fontSize: 15, color: '#0F6B54', width: 52, textAlign: 'right', flexShrink: 0, fontWeight: 600 }}>
                           {row.arctan}%
                         </span>
                       </div>
@@ -1379,8 +1379,8 @@ export default function LandingPage() {
           <div style={{ maxWidth: 600, margin: '0 auto', display: 'flex', flexDirection: 'column' as const, alignItems: 'center', textAlign: 'center' as const }}>
 
             {/* Icon */}
-            <div style={{ width: 88, height: 88, borderRadius: 22, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 36 }}>
-              <img src="/logos/arctan-mark.svg" alt="Arctan" width="50" height="30" style={{ display: 'block' }} />
+            <div style={{ width: 88, height: 88, borderRadius: 22, background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 36 }}>
+              <img src="/logos/arctan-mark.svg" alt="Arctan" width="52" height="32" style={{ display: 'block', filter: 'brightness(0) invert(1)' }} />
             </div>
 
             {/* Heading */}
@@ -1397,7 +1397,7 @@ export default function LandingPage() {
             <div className="rsp-contact-btns" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' as const, justifyContent: 'center' as const }}>
               <button
                 onClick={openTally}
-                style={{ padding: '14px 36px', borderRadius: 9999, background: D.lime, color: D.heading, fontFamily: GTA, fontWeight: 400, fontSize: 16, letterSpacing: '-0.01em', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' as const }}
+                style={{ padding: '14px 36px', borderRadius: 9999, background: D.lime, color: '#ffffff', fontFamily: GTA, fontWeight: 400, fontSize: 16, letterSpacing: '-0.01em', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' as const }}
               >
                 Try it Free
               </button>
