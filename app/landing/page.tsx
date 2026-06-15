@@ -629,9 +629,12 @@ export default function LandingPage() {
           transition: 'background 0.4s ease',
         }}>
           <div className="rsp-nav-inner" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <img src={IMG.dunaLogo} alt="Arctan" style={{ width: 28, height: 28, borderRadius: 6, objectFit: 'cover' }}/>
-              <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.heading }}>arctan</span>
+            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <svg width="28" height="22" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 8,74 Q 50,14 92,74" stroke="#1B0624" strokeWidth="9" strokeLinecap="round"/>
+                <path d="M 26,70 Q 50,46 74,70" stroke="#1A8A70" strokeWidth="9" strokeLinecap="round"/>
+              </svg>
+              <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.heading }}>arc<span style={{ color: '#1A8A70' }}>t</span>an</span>
             </a>
             <div className="rsp-nav-links" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
               {[
@@ -922,11 +925,16 @@ export default function LandingPage() {
                 <circle className="arctanGlow" cx="450" cy="180" r="58" fill={D.lime} opacity="0.2" />
                 <circle cx="450" cy="180" r="42" fill={D.white} stroke="rgba(27,6,36,0.10)" strokeWidth="1" />
                 <circle cx="450" cy="180" r="42" fill="none" stroke={D.lime} strokeWidth="1.5" opacity="0.32" />
-                {/* Arctan logo */}
-                <image href={IMG.dunaLogo} x="432" y="162" width="36" height="36" clipPath="url(#arctanLogoClip)" preserveAspectRatio="xMidYMid slice" />
+                {/* Arctan logomark — two chevrons */}
+                <g transform="translate(432,162)">
+                  <path d="M 3,30 Q 18,6 33,30" fill="none" stroke="#1B0624" strokeWidth="3.8" strokeLinecap="round"/>
+                  <path d="M 9,27 Q 18,16 27,27" fill="none" stroke="#1A8A70" strokeWidth="3.8" strokeLinecap="round"/>
+                </g>
                 {/* label */}
-                <text x="450" y="252" textAnchor="middle" fontSize="14" fontWeight="500" letterSpacing="-0.03em" fill={D.ink} fontFamily="sans-serif">arctan</text>
-                <text x="450" y="267" textAnchor="middle" fontSize="8" letterSpacing="0.12em" fill={D.muted} fontFamily="sans-serif">SPEECH ENHANCEMENT</text>
+                <text x="450" y="252" textAnchor="middle" fontSize="14" fontWeight="400" letterSpacing="-0.03em" fontFamily="sans-serif">
+                  <tspan fill={D.ink}>arc</tspan><tspan fill="#1A8A70">t</tspan><tspan fill={D.ink}>an</tspan>
+                </text>
+                <text x="450" y="267" textAnchor="middle" fontSize="8" letterSpacing="0.12em" fill={D.muted} fontFamily="sans-serif">VOICE ISOLATION</text>
 
                 {/* ════════════════ VOICE AGENT (the bot) ════════════════ */}
                 <rect x="742" y="156" width="226" height="48" rx="24" fill={D.white} stroke="rgba(27,6,36,0.12)" strokeWidth="1" />
@@ -1400,9 +1408,12 @@ export default function LandingPage() {
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>
             <div className="rsp-footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 60, marginBottom: 56 }}>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                  <img src={IMG.dunaLogo} alt="Arctan" style={{ width: 28, height: 28, borderRadius: 6, objectFit: 'cover' }}/>
-                  <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.ink }}>arctan</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                  <svg width="28" height="22" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 8,74 Q 50,14 92,74" stroke="#1B0624" strokeWidth="9" strokeLinecap="round"/>
+                    <path d="M 26,70 Q 50,46 74,70" stroke="#1A8A70" strokeWidth="9" strokeLinecap="round"/>
+                  </svg>
+                  <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.ink }}>arc<span style={{ color: '#1A8A70' }}>t</span>an</span>
                 </div>
                 <p style={{ fontFamily: GTA, fontSize: 14, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.7em', color: D.inkSub, maxWidth: 240 }}>
                   The audio intelligence layer for Voice AI. Remove noise, isolate speakers, and make your AI actually work.

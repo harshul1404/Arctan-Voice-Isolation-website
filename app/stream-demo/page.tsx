@@ -23,7 +23,7 @@ const OFF    = '#F7F7F5'
 const WHITE  = '#FFFFFF'
 const BORDER = 'rgba(0,0,0,0.09)'
 
-const LOGO   = 'https://framerusercontent.com/images/NE8JsjXIjzJVlyyyktYN06ZoPY.png'
+const LOGO   = '/logos/arctan-mark.svg'
 
 // ── Utility: build a sinusoidal SVG polyline points string ────────────────────
 // x0..x1, centre y, amplitude (px), wavelength (px), phase offset (rad)
@@ -270,21 +270,20 @@ export default function StreamDemo() {
             <circle cx={CX} cy={CY} r="46"
               fill={WHITE}
               stroke="rgba(27,6,36,0.08)" strokeWidth="1" />
-            {/* Logo */}
-            <image
-              href={LOGO}
-              x={CX - 26} y={CY - 26}
-              width="52" height="52"
-              clipPath="url(#logoClip)"
-              preserveAspectRatio="xMidYMid meet"
-            />
+            {/* Arctan logomark — two chevrons */}
+            <g transform={`translate(${CX - 20},${CY - 16})`}>
+              <path d="M 3,30 Q 20,4 37,30" fill="none" stroke="#1B0624" strokeWidth="4.2" strokeLinecap="round"/>
+              <path d="M 10,26 Q 20,13 30,26" fill="none" stroke="#1A8A70" strokeWidth="4.2" strokeLinecap="round"/>
+            </g>
             {/* Labels below node */}
             <text x={CX} y={CY + 76} textAnchor="middle"
               fontFamily={GTA} fontSize="14" fontWeight="400"
-              letterSpacing="-0.03em" fill={INK}>arctan</text>
+              letterSpacing="-0.03em">
+              <tspan fill={INK}>arc</tspan><tspan fill="#1A8A70">t</tspan><tspan fill={INK}>an</tspan>
+            </text>
             <text x={CX} y={CY + 91} textAnchor="middle"
               fontFamily="'Fragment Mono', monospace" fontSize="8"
-              letterSpacing="0.12em" fill={MUTED}>SPEECH ENHANCEMENT</text>
+              letterSpacing="0.12em" fill={MUTED}>VOICE ISOLATION</text>
 
             {/* ════════ OUTPUT STREAM ════════ */}
             {/* Clean horizontal line */}
