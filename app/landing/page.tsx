@@ -72,11 +72,11 @@ const CLEAN_SP = [1.8,1.9,2.0,1.9,1.8,1.9,2.0,1.9,1.8,1.9,2.0,1.9,2.1,1.9,2.0,1.
 
 // ─── Benchmark chart data — STT model WER comparison ─────────────────────────
 const STT_MODELS = [
-  { model: 'AssemblyAI Universal-2', raw: 27.2, arctan: 14.3 },
-  { model: 'Cartesia Ink-Whisper',   raw: 28.3, arctan: 13.0 },
-  { model: 'Deepgram Nova 3',        raw: 24.1, arctan: 11.5 },
-  { model: 'Soniox STT Async v4',    raw: 27.1, arctan:  8.9 },
-  { model: 'Speechmatics',           raw: 25.9, arctan:  8.7 },
+  { model: 'AssemblyAI Universal-2', raw: 27.2, arctan: 15.8 },
+  { model: 'Cartesia Ink-Whisper',   raw: 28.3, arctan: 14.4 },
+  { model: 'Deepgram Nova 3',        raw: 24.1, arctan: 12.7 },
+  { model: 'Soniox STT Async v4',    raw: 27.1, arctan: 11.9 },
+  { model: 'Speechmatics',           raw: 25.9, arctan: 11.7 },
 ]
 const BENCH_MAX = 35 // normalisation ceiling (px above max raw value)
 
