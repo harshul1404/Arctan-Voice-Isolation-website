@@ -1165,9 +1165,6 @@ export default function LandingPage() {
               <h2 className="rsp-wer-h2" style={{ fontFamily: GTA, fontWeight: 400, fontSize: 44, letterSpacing: '-0.05em', lineHeight: '1.1em', fontFeatureSettings: '"blwf" on,"cv09" on,"cv03" on,"cv04" on,"cv11" on', color: D.ink, margin: 0 }}>
                 The industry's <span style={{ color: D.teal }}>lowest</span> WER.
               </h2>
-              <p style={{ fontFamily: GTA, fontSize: 17, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.6em', color: D.inkSub, maxWidth: 380, margin: 0 }}>
-                Compared against other noise-suppression providers on real-world voice agent calls with background noise, cross-talk, and mumbles.
-              </p>
             </div>
 
             {/* WER bar chart */}
@@ -1211,11 +1208,12 @@ export default function LandingPage() {
               )
             })()}
 
-            {/* Supporting factors */}
-            <div className="wer-factors">
-              {['Speaker focus', 'Echo cancellation', 'Speech preservation', 'Accurate VAD', 'Multi-speaker separation', 'Noise suppression'].map(f => (
-                <span key={f} className="wer-factor-tag">{f}</span>
-              ))}
+            {/* Footer note */}
+            <div style={{ marginTop: 36, display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{ width: 5, height: 5, borderRadius: '50%', background: D.teal, flexShrink: 0 }} />
+              <span style={{ fontFamily: GTA, fontSize: 13, color: D.muted, letterSpacing: '-0.01em' }}>
+                Compared against other noise-suppression providers on real-world voice agent calls with background noise, cross-talk, and mumbles.
+              </span>
             </div>
 
           </div>
