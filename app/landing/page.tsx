@@ -220,7 +220,20 @@ export default function LandingPage() {
     }
 
     const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update) }
-    const onResize = () => { sizeCanvas(); applyHeight(); drawFrame(currentFrame < 0 ? 0 : currentFrame); update() }
+    // Only recalculate section height when the viewport WIDTH changes (intentional
+    // window resize). iOS Safari fires resize on every scroll as the URL bar
+    // shows/hides (height-only change) — recalculating height there causes the
+    // seq-section to grow/shrink, shifting all sections below it.
+    let lastResizeWidth = window.innerWidth
+    const onResize = () => {
+      sizeCanvas()
+      if (window.innerWidth !== lastResizeWidth) {
+        lastResizeWidth = window.innerWidth
+        applyHeight()
+      }
+      drawFrame(currentFrame < 0 ? 0 : currentFrame)
+      update()
+    }
 
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize)
