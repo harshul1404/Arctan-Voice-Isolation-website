@@ -80,6 +80,9 @@ const STT_MODELS = [
 ]
 const BENCH_MAX = 35 // normalisation ceiling (px above max raw value)
 
+// Prefix for all public/ assets — must match next.config.mjs basePath
+const BP = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 export default function LandingPage() {
   const [scrolled, setScrolled]       = useState(false)
   const [mounted, setMounted]         = useState(false)
@@ -220,15 +223,30 @@ export default function LandingPage() {
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize)
 
-    // Preload all frames
-    FRAME_NUMS.forEach((n, i) => {
+    // Load frame 1 first — render it immediately so canvas isn't blank on load
+    const firstImg = new Image()
+    firstImg.onload = () => {
+      images[0] = firstImg
+      loadedCount++
+      drawFrame(0)
+      update()
+    }
+    firstImg.src = `${BP}/frames/1.webp`
+
+    // Load remaining frames in the background; each one triggers a redraw if it's the current target
+    FRAME_NUMS.slice(1).forEach((n, idx) => {
+      const i = idx + 1
       const img = new Image()
       img.onload = () => {
         images[i] = img
         loadedCount++
-        if (loadedCount === TOTAL) { drawFrame(0); update() }
+        // Redraw if this newly loaded frame is what the scroll position needs
+        const scrolledIn = Math.max(0, -(section.getBoundingClientRect?.() || { top: 0 }).top)
+        const progress   = Math.min(1, scrolledIn / EXTRA_SCROLL)
+        const target = Math.round(progress * (TOTAL - 1))
+        if (target === i) { cancelAnimationFrame(raf); raf = requestAnimationFrame(update) }
       }
-      img.src = `/frames/${n}.png`
+      img.src = `${BP}/frames/${n}.webp`
     })
 
     return () => {
@@ -604,7 +622,7 @@ export default function LandingPage() {
           .rsp-stream-head    { margin-bottom: 36px !important; }
           .rsp-stream-h2      { font-size: 30px !important; }
           .rsp-stream-svg     { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
-          .rsp-stream-svg svg { min-width: 680px; }
+          .rsp-stream-svg > div { min-width: 680px; }
 
           /* Benchmark */
           .rsp-bench-section  { padding: 60px 20px !important; }
@@ -631,7 +649,7 @@ export default function LandingPage() {
           .rsp-flow-row    { min-width: 620px; }
           .rsp-code-wrap   { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
           .rsp-stream-svg     { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
-          .rsp-stream-svg svg { min-width: 820px; }
+          .rsp-stream-svg > div { min-width: 820px; }
         }
       `}</style>
 
@@ -649,7 +667,7 @@ export default function LandingPage() {
         }}>
           <div className="rsp-nav-inner" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <img src="/logos/arctan-mark.svg" alt="Arctan logomark" width="34" height="20" style={{ display: 'block' }} />
+              <img src={`${BP}/logos/arctan-mark.svg`} alt="Arctan logomark" width="34" height="20" style={{ display: 'block' }} />
               <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.heading }}>arctan</span>
             </a>
             <div className="rsp-nav-links" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
@@ -729,12 +747,12 @@ export default function LandingPage() {
             }}>
               {Array(6).fill(null).flatMap((_, rep) =>
                 ([
-                  { src: '/logos/iccs.jpeg',         alt: 'ICCS',                  w: 160, h: 60 },
-                  { src: '/logos/megaaopes.svg',     alt: 'Megaaopes',             w: 42,  h: 42 },
-                  { src: '/logos/creed.avif',        alt: 'Creed Infotech',        w: 130, h: 38 },
-                  { src: '/logos/ikarus.avif',       alt: 'Ikarus 3D',             w: 88,  h: 42 },
-                  { src: '/logos/grssl.avif',        alt: 'Grassroots',            w: 130, h: 32 },
-                  { src: '/logos/diverseline.avif',  alt: 'Diverse Line Impex',    w: 152, h: 38 },
+                  { src: `${BP}/logos/iccs.jpeg`,         alt: 'ICCS',                  w: 160, h: 60 },
+                  { src: `${BP}/logos/megaaopes.svg`,     alt: 'Megaaopes',             w: 42,  h: 42 },
+                  { src: `${BP}/logos/creed.avif`,        alt: 'Creed Infotech',        w: 130, h: 38 },
+                  { src: `${BP}/logos/ikarus.avif`,       alt: 'Ikarus 3D',             w: 88,  h: 42 },
+                  { src: `${BP}/logos/grssl.avif`,        alt: 'Grassroots',            w: 130, h: 32 },
+                  { src: `${BP}/logos/diverseline.avif`,  alt: 'Diverse Line Impex',    w: 152, h: 38 },
                 ] as const).map(({ src, alt, w, h }) => (
                   <img
                     key={`${rep}-${alt}`}
@@ -827,10 +845,13 @@ export default function LandingPage() {
 
             {/* Stream animation — scrolls horizontally on small screens to stay legible */}
             <div className="rsp-stream-svg" style={{ width: '100%', overflow: 'hidden' }}>
+              {/* Intrinsic-ratio wrapper: locks height to viewBox aspect ratio so scaleY
+                  animations cannot trigger layout reflow in the parent section */}
+              <div style={{ position: 'relative', paddingBottom: '36%', height: 0 }}>
               <svg
                 viewBox="0 0 1000 360"
                 preserveAspectRatio="xMidYMid meet"
-                style={{ width: '100%', display: 'block' }}
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block', overflow: 'hidden' }}
               >
                 <defs>
                   <clipPath id="arctanLogoClip"><rect x="432" y="162" width="36" height="36" rx="8" /></clipPath>
@@ -937,7 +958,7 @@ export default function LandingPage() {
                 <circle cx="450" cy="180" r="42" fill={D.white} stroke="rgba(27,6,36,0.10)" strokeWidth="1" />
                 <circle cx="450" cy="180" r="42" fill="none" stroke={D.lime} strokeWidth="1.5" opacity="0.32" />
                 {/* Arctan logomark */}
-                <image href="/logos/arctan-mark.svg" x="426" y="166" width="48" height="28" />
+                <image href={`${BP}/logos/arctan-mark.svg`} x="426" y="166" width="48" height="28" />
                 {/* label */}
                 <text x="450" y="252" textAnchor="middle" fontSize="14" fontWeight="400" letterSpacing="-0.03em" fontFamily="sans-serif">
                   <tspan fill={D.ink}>arctan</tspan>
@@ -956,6 +977,7 @@ export default function LandingPage() {
                 <text x="790" y="181" dominantBaseline="middle" fontSize="13" fontWeight="500" letterSpacing="-0.015em" fill={D.ink} fontFamily="sans-serif">Voice Agent</text>
 
               </svg>
+              </div>{/* end intrinsic-ratio wrapper */}
             </div>
 
           </div>
@@ -1351,7 +1373,7 @@ export default function LandingPage() {
               {/* SOC 2 */}
               <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'center', gap: 12 }}>
                 <div style={{ width: 100, height: 100, borderRadius: 18, border: `1px solid ${D.border}`, background: D.white, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 8 }}>
-                  <img src="/logos/soc2-icon.png" alt="SOC 2" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                  <img src={`${BP}/logos/soc2-icon.png`} alt="SOC 2" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                 </div>
                 <span style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, color: D.bodyText, textAlign: 'center' as const, letterSpacing: '-0.01em' }}>SOC 2 Type 2</span>
               </div>
@@ -1359,7 +1381,7 @@ export default function LandingPage() {
               {/* ISO 27001 */}
               <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'center', gap: 12 }}>
                 <div style={{ width: 100, height: 100, borderRadius: 18, border: `1px solid ${D.border}`, background: D.white, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 8 }}>
-                  <img src="/logos/iso27001-icon.avif" alt="ISO 27001" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                  <img src={`${BP}/logos/iso27001-icon.avif`} alt="ISO 27001" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                 </div>
                 <span style={{ fontFamily: GTA, fontSize: 13, fontWeight: 400, color: D.bodyText, textAlign: 'center' as const, letterSpacing: '-0.01em' }}>ISO 27001</span>
               </div>
@@ -1421,7 +1443,7 @@ export default function LandingPage() {
               {/* Brand */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-                  <img src="/logos/arctan-mark.svg" alt="Arctan logomark" width="34" height="20" style={{ display: 'block' }} />
+                  <img src={`${BP}/logos/arctan-mark.svg`} alt="Arctan logomark" width="34" height="20" style={{ display: 'block' }} />
                   <span style={{ fontFamily: GTA, fontSize: 16, fontWeight: 400, letterSpacing: '-0.02em', color: D.ink }}>arctan</span>
                 </div>
                 <p style={{ fontFamily: GTA, fontSize: 14, fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.7em', color: D.inkSub, maxWidth: 260, margin: 0 }}>
