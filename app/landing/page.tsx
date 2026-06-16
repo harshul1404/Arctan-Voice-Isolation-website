@@ -813,7 +813,7 @@ export default function LandingPage() {
                     letterSpacing: '0em', lineHeight: '1em',
                     fontFeatureSettings: "'zero' on, 'tnum' on",
                     color: D.darkPure,
-                    marginBottom: 20,
+                    marginBottom: 15,
                   }}>
                     {s.n}<span style={{ fontSize: 40, verticalAlign: 'baseline', letterSpacing: '-0.01em' }}>{s.suffix}</span>
                   </div>
